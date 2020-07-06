@@ -1,1 +1,0 @@
-0:0:0:0:0:0:0:1 - - [06/Jul/2020:17:08:38 -0300] "GET /ProjetoWebUser/user?id=1 HTTP/1.1" 500 2003 http-bio-8080-exec-1 389

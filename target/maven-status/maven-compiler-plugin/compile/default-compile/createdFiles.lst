@@ -1,5 +1,0 @@
-br/com/lucas/dao/PersistenceManager.class
-br/com/lucas/controller/MainController.class
-br/com/lucas/entity/User.class
-br/com/lucas/controller/UserController.class
-br/com/lucas/dao/UserDao.class
