@@ -24,7 +24,7 @@ public class PersistenceManager {
     public EntityManagerFactory getEntityManagerFactory() {
         if(factory == null) {
             factory = Persistence
-                    .createEntityManagerFactory("usuario");
+                    .createEntityManagerFactory("usuarios");
         }
         return factory;
     }
