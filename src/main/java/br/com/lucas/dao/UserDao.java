@@ -5,6 +5,7 @@ import br.com.lucas.entity.User;
 import javax.persistence.EntityManager;
 import javax.persistence.RollbackException;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class UserDao {
 
@@ -33,10 +34,11 @@ public class UserDao {
     }
 
     public User buscarPorEmail(String email) {
-        String consulta = "select a from User a where userEmail = :email";
+        String consulta = "select u from User u where userEmail = :email";
         TypedQuery<User> query = manager.createQuery(consulta, User.class);
-        query.setParameter("nome", email);
-        return query.getSingleResult();
+        query.setParameter("email", email);
+        List<User> users = query.getResultList();
+        return users.get(0);
     }
 
     public void salvarSemCommit(User user) {
@@ -55,6 +57,7 @@ public class UserDao {
             manager.remove(user);
             manager.getTransaction().commit();
         }catch (Exception e){
+            manager.getTransaction().rollback();
             throw e;
         }
 

@@ -23,8 +23,6 @@ public class User {
     @Column(name = "user_role")
     private String userRole;
 
-    @Column(name = "user_token")
-    private String userToken;
 
     public Long getIdUser() {
         return idUser;
@@ -64,13 +62,5 @@ public class User {
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
-    }
-
-    public String getUserToken() {
-        return userToken;
-    }
-
-    public void setUserToken(String userToken) {
-        this.userToken = userToken;
     }
 }

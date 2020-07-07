@@ -69,7 +69,7 @@ public class UserController extends HttpServlet {
             out.flush();
         } catch (Exception e) {
             ObjectMapper mapper = new ObjectMapper();
-            String error = "{ \"error\":\"Error ao informar valores\"}";
+            String error = "{ \"error\":\"Error ao informar valores ou usuario ja cadastrado\"}";
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             resp.setStatus(422);
