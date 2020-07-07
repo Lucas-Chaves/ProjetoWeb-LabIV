@@ -4,6 +4,7 @@ import br.com.lucas.entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.RollbackException;
+import javax.persistence.TypedQuery;
 
 public class UserDao {
 
@@ -22,11 +23,28 @@ public class UserDao {
     public void salvar(User user) throws RollbackException {
         try {
             manager.getTransaction().begin();
-            manager.merge(user);
+            salvarSemCommit(user);
+            manager.flush();
             manager.getTransaction().commit();
         } catch (RollbackException e) {
             manager.getTransaction().rollback();
             throw e;
+        }
+    }
+
+    public User buscarPorEmail(String email) {
+        String consulta = "select a from User a where userEmail = :email";
+        TypedQuery<User> query = manager.createQuery(consulta, User.class);
+        query.setParameter("nome", email);
+        return query.getSingleResult();
+    }
+
+    public void salvarSemCommit(User user) {
+        if(user.getIdUser() == null) {
+            manager.persist(user);
+        }
+        else {
+            manager.merge(user);
         }
     }
 
