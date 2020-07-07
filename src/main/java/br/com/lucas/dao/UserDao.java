@@ -51,8 +51,8 @@ public class UserDao {
     public void delete(Long id) {
         User user = buscar(id);
         try{
-            manager.remove(user);
             manager.getTransaction().begin();
+            manager.remove(user);
             manager.getTransaction().commit();
         }catch (Exception e){
             throw e;

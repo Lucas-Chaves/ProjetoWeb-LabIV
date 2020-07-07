@@ -5,6 +5,15 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
 
+    <filter>
+        <filter-name>corsFilter</filter-name>
+        <filter-class>br.com.lucas.controller.CorsFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>corsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>mainServlet</servlet-name>
         <servlet-class>br.com.lucas.controller.MainController</servlet-class>
